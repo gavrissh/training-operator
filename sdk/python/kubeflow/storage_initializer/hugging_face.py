@@ -72,7 +72,7 @@ class HuggingFace(modelProvider):
             trust_remote_code=True,
         )
         transformers.AutoTokenizer.from_pretrained(
-            self.model, cache_dir=VOLUME_PATH_MODEL
+            self.model, cache_dir=VOLUME_PATH_MODEL, token=self.config.access_token,
         )
 
 

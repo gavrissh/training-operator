@@ -1,5 +1,5 @@
-peft==0.3.0
+peft==0.13.2
 datasets==2.15.0
-transformers==4.38.0
+transformers==4.46.3
 boto3==1.33.9
-huggingface_hub==0.23.4
+huggingface_hub==0.25.0

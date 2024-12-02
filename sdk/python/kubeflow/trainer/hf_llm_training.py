@@ -55,6 +55,8 @@ def setup_model_and_tokenizer(model_uri, transformer_type, model_dir, num_labels
         local_files_only=True,
     )
 
+    tokenizer.pad_token = tokenizer.eos_token
+
     # Freeze model parameters
     for param in model.parameters():
         param.requires_grad = False
@@ -75,7 +77,7 @@ def load_and_preprocess_data(dataset_dir, transformer_type, tokenizer):
         logger.info("Tokenize dataset")
         # TODO (andreyvelich): Discuss how user should set the tokenizer function.
         dataset = dataset.map(
-            lambda x: tokenizer(x["text"], padding="max_length", truncation=True),
+            lambda x: tokenizer(x["text"], padding="longest", truncation=True),
             batched=True,
         )
     else:
